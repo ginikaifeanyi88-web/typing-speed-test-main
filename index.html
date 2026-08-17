@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="styles/styles.css">
+  <title>Frontend Mentor | Typing Speed Test</title>
+
+</head>
+<body>
+<div class="header">
+  <div class="main-logo"></div>
+  <div class="personal-best-container">
+    <img src="assets/images/icon-personal-best.svg" class="personal-best-logo" alt="icon-personal-best">
+  <p><span class="personal-best-wide-screen">Personal best:</span> <span class="personal-best-small-screen">Best:</span> </p>
+  <p><span>92</span>WPM</p> 
+  </div>
+</div>
+
+<div class="stats-difficulty-and-mode">
+
+  <div class="stats">
+  <div class="single-stat">
+  <p class="stat-name">WPM:</p> <!-- WPM -->
+  <p class="stat-value">40</p>
+  </div>
+   <div class="single-stat">
+   <p class="stat-name">Accuracy:</p> <!-- Accuracy -->
+    <p class="stat-value"><span>94</span>%</p>
+  </div>
+  <div class="single-stat">
+  <p class="stat-name">Time:</p> <!-- Time -->
+  <p class="stat-value">0:46</p>
+  </div>
+</div>
+
+  <div class="difficulty-and-mode">
+    <div class="difficulty">
+  <p class="difficulty-and-mode-title">Difficulty:</p>
+   <div class="decision">
+    <p class="decision-name">Hard</p>
+    <i class="fa-solid fa-chevron-down"></i>
+   </div>
+  <div class="choice">
+    <input type="radio" id="easy" name="difficulty-choices" value="Easy">
+    <label for="easy">Easy</label>
+  </div>
+   <div class="choice">
+    <input type="radio" id="medium" name="difficulty-choices" value="Medium">
+    <label for="medium">Medium</label>
+   </div>
+  <div class="choice">
+    <input type="radio" id="hard" name="difficulty-choices" value="Hard">
+    <label for="hard">Hard</label>
+  </div>
+  </div>
+
+  <div class="mode">
+  <p class="difficulty-and-mode-title">Mode:</p>
+  <div class="decision">
+    <p class="decision-name">Timed (60s)</p>
+    <i class="fa-solid fa-chevron-down"></i>
+  </div>
+  <div class="choice">
+    <input type="radio" id="timed" name="mode-choices" value="Timed">
+    <label for="timed">Timed (60s)</label>
+  </div>
+  <div class="choice">
+    <input type="radio" id="passage" name="mode-choices" value="Passage">
+    <label for="timed">Passage</label>
+  </div>
+  </div>
+
+   </div>
+</div>
+
+<div class="text">
+  <div class="button-and-text">
+  <button>Start Typing Test</button>
+  
+ <p>Or click the text and start typing</p> 
+
+ </div>
+<textarea name="text-box" id="text-box"></textarea>
+
+  <!-- Test Complete Start -->
+<div class="results">
+  <h3>Test Complete!</h3>
+  <p>Solid run. Keep pushing to beat your high score.</p>
+<div class="results-stats">
+   <div class="result-single-stat">
+  <p class="stat-name">WPM:</p> <!-- WPM -->
+  <p class="stat-value">40</p>
+  </div>
+    <div class="result-single-stat">
+   <p class="stat-name">Accuracy:</p> <!-- Accuracy -->
+    <p class="stat-value"><span>94</span>%</p>
+  </div>
+  <div class="result-single-stat">
+  <p class="stat-name">Characters:</p> <!-- Time -->
+  <p class="stat-value">120/5</p>
+  </div>
+  </div>
+
+<div class="go-again-button">
+  Go Again
+  </div>
+  <!-- Test Complete End -->
+
+   </div>
+   </div>
+
+  <footer class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>. 
+    Coded by <a href="#">Your Name Here</a>.
+  </footer>
+</body>
+</html>

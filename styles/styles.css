@@ -1,0 +1,67 @@
+       @import url( 'https://fonts.googleapis.com/css?family=Sora');
+
+        /* @link https://utopia.fyi/type/calculator?c=360,18,1.2,1240,20,1.25,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
+
+:root {
+  --step--2: clamp(0.7813rem, 0.7736rem + 0.0341vw, 0.8rem);
+  --step--1: clamp(0.9375rem, 0.9119rem + 0.1136vw, 1rem);
+  --step-0: clamp(1.125rem, 1.0739rem + 0.2273vw, 1.25rem);
+  --step-1: clamp(1.35rem, 1.2631rem + 0.3864vw, 1.5625rem);
+  --step-2: clamp(1.62rem, 1.4837rem + 0.6057vw, 1.9531rem);
+  --step-3: clamp(1.944rem, 1.7405rem + 0.9044vw, 2.4414rem);
+  --step-4: clamp(2.3328rem, 2.0387rem + 1.3072vw, 3.0518rem);
+  --step-5: clamp(2.7994rem, 2.384rem + 1.8461vw, 3.8147rem);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Sora';
+}
+
+body {
+    font-size: var(--step--1);
+    color: hsl(240, 1%, 59%);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;           
+    background-color: hsl(0, 0%, 7%);
+    margin-top: 10px;
+    margin-left: 11px;
+    margin-right: 11px;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.main-logo{
+    background-image: url(../assets/images/logo-small.svg);
+    height: 30px;
+    width: 30px;
+    background-repeat: no-repeat;
+}
+
+.personal-best-container {
+    display: flex;
+}
+
+.personal-best-logo {
+    margin-right: 8px;
+}
+
+.personal-best-wide-screen {
+    display: none;
+}
+
+  .attribution { 
+    margin-top: auto;
+    font-size: 0.6875rem;
+     text-align: center;
+     }
+    .attribution a {
+         color: hsl(228, 45%, 44%); 
+    }
