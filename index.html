@@ -25,15 +25,15 @@
   <div class="stats">
   <div class="single-stat">
   <p class="stat-name">WPM:</p> <!-- WPM -->
-  <p class="stat-value WPM-stat-value">40</p>
+  <p class="stat-value WPM-stat-value">0</p>
   </div>
    <div class="single-stat single-stat-accuracy">
    <p class="stat-name">Accuracy:</p> <!-- Accuracy -->
-    <p class="stat-value Accuracy-stat-value"><span>94</span>%</p>
+    <p class="stat-value Accuracy-stat-value"><span>100</span>%</p>
   </div>
   <div class="single-stat">
   <p class="stat-name">Time:</p> <!-- Time -->
-  <p class="stat-value Time-stat-value">0:46</p>
+  <p class="stat-value Time-stat-value">0:60</p>
   </div>
 </div>
 
@@ -45,16 +45,16 @@
     <i class="fa-solid fa-chevron-down"></i>
    </div>
    <div class="choices">
-  <div class="choice">
-    <input type="radio" id="easy" name="difficulty-choices" value="Easy">
+  <div class="choice easy-choice">
+    <input type="radio" id="easy" name="difficulty-choices" class="radio-buttons" value="Easy">
     <label for="easy">Easy</label>
   </div>
-   <div class="choice">
-    <input type="radio" id="medium" name="difficulty-choices" value="Medium">
+   <div class="choice medium-choice">
+    <input type="radio" id="medium" name="difficulty-choices" class="radio-buttons"  value="Medium">
     <label for="medium">Medium</label>
    </div>
   <div class="choice">
-    <input type="radio" id="hard" name="difficulty-choices" value="Hard">
+    <input type="radio" id="hard" name="difficulty-choices"  class="radio-buttons" value="Hard">
     <label for="hard">Hard</label>
   </div>
   </div>
@@ -67,13 +67,13 @@
     <i class="fa-solid fa-chevron-down"></i>
   </div>
   <div class="choices">
-  <div class="choice">
-    <input type="radio" id="timed" name="mode-choices" value="Timed">
+  <div class="choice timed-choice">
+    <input type="radio" id="timed" name="mode-choices" class="radio-buttons"  value="Timed">
     <label for="timed">Timed (60s)</label>
   </div>
   <div class="choice">
-    <input type="radio" id="passage" name="mode-choices" value="Passage">
-    <label for="timed">Passage</label>
+    <input type="radio" id="passage" name="mode-choices" class="radio-buttons"  value="Passage">
+    <label for="passage">Passage</label>
   </div>
   </div>
   </div>
@@ -83,7 +83,7 @@
 
 <div class="text">
   <div class="button-and-text">
-  <button>Start Typing Test</button>
+  <button class="start-button">Start Typing Test</button>
   
  <p>Or click the text and start typing</p> 
 

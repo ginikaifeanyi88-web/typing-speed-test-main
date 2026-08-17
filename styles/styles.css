@@ -100,18 +100,7 @@ body {
 .stat-value {
     font-weight: bold;
     font-size: var(--step-0);
-}
-
-.WPM-stat-value {
     color: #fff;
-}
-
-.Accuracy-stat-value {
-    color: hsl(354, 63%, 57%);
-}
-
-.Time-stat-value {
-    color: hsl(49, 85%, 70%);
 }
 
 .difficulty-and-mode {
@@ -119,6 +108,13 @@ body {
     flex-direction: row;
     justify-content: space-between;
     margin-top: 15px;
+}
+.difficulty {
+    position: relative;
+}
+
+.mode {
+    position: relative;
 }
 
 .difficulty-and-mode-title {
@@ -138,6 +134,14 @@ body {
     border-radius: 5px;
 }
 
+.difficulty:hover .choices {
+    display: block;
+}
+
+.mode:hover .choices {
+    display: block;
+}
+
 .decision-name {
     font-size: var(--step--2);
 }
@@ -149,6 +153,61 @@ margin-left: 4px;
 .choices {
     background-color: hsl(0, 0%, 15%);
     margin-top: 6px;
+    color: #fff;
+    border-radius: 10px; 
+    position: absolute;
+    z-index: 1;
+    width: 43vw;
+    top: 24px;
+    display: none;
+}
+.choice {
+    padding: 5px;
+}
+
+.choice:hover {
+    background-color:  hsl(240, 1%, 28%);
+    cursor: pointer;
+}
+
+.easy-choice {
+    border-bottom: 1px solid hsl(240, 1%, 59%);
+}
+
+.medium-choice {
+    border-bottom: 1px solid hsl(240, 1%, 59%);
+}
+
+.timed-choice {
+    border-bottom: 1px solid hsl(240, 1%, 59%);  
+}
+label {
+    margin-left: 3px;
+ 
+}
+
+label:hover{
+    cursor: pointer;
+}
+
+.radio-buttons:hover {
+cursor: pointer;
+}
+
+.start-button {
+    background-color:  hsl(214, 100%, 55%);
+    color: #fff;
+    border-style: none;
+    padding: 10px;
+    border-radius: 6px;
+}
+
+.start-button:hover{
+    cursor: pointer;
+}
+
+.text {
+    margin-top: 26px;
 }
   .attribution { 
     margin-top: auto;
