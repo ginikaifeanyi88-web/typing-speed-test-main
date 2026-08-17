@@ -49,6 +49,10 @@ body {
     display: flex;
 }
 
+.personal-best-para {
+    margin-right: 3px;
+}
+
 .personal-best-logo {
     margin-right: 8px;
 }
@@ -57,6 +61,95 @@ body {
     display: none;
 }
 
+.best-score {
+    color: #fff;
+}
+
+.best-score-value {
+    margin-right: 3px;
+}
+
+.stats-difficulty-and-mode {
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+}
+
+.stats {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 11px;
+}
+
+.stat-name {
+    margin-bottom: 4px;
+}
+
+.single-stat {
+    text-align: center;
+}
+
+.single-stat-accuracy {
+    padding: 0 10vw;
+    border-left: 1px solid hsl(240, 1%, 59%);
+    border-right: 1px solid hsl(240, 1%, 59%);
+}
+
+.stat-value {
+    font-weight: bold;
+    font-size: var(--step-0);
+}
+
+.WPM-stat-value {
+    color: #fff;
+}
+
+.Accuracy-stat-value {
+    color: hsl(354, 63%, 57%);
+}
+
+.Time-stat-value {
+    color: hsl(49, 85%, 70%);
+}
+
+.difficulty-and-mode {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.difficulty-and-mode-title {
+    display: none;
+}
+
+.decision {
+    display: flex;
+    flex-direction: row;
+    color: #fff;
+    align-items: center;
+    font-size: var(--step--1);
+    border: 1px solid #fff;
+    justify-content: center;
+    padding: 5px 0px;
+    width: 43vw;
+    border-radius: 5px;
+}
+
+.decision-name {
+    font-size: var(--step--2);
+}
+.decision > i {
+font-size: 9px;
+margin-left: 4px;
+}
+
+.choices {
+    background-color: hsl(0, 0%, 15%);
+    margin-top: 6px;
+}
   .attribution { 
     margin-top: auto;
     font-size: 0.6875rem;

@@ -15,8 +15,8 @@
   <div class="main-logo"></div>
   <div class="personal-best-container">
     <img src="assets/images/icon-personal-best.svg" class="personal-best-logo" alt="icon-personal-best">
-  <p><span class="personal-best-wide-screen">Personal best:</span> <span class="personal-best-small-screen">Best:</span> </p>
-  <p><span>92</span>WPM</p> 
+  <p class="personal-best-para"><span class="personal-best-wide-screen">Personal best:</span> <span class="personal-best-small-screen">Best:</span> </p>
+  <p class="best-score"><span class="best-score-value">92</span>WPM</p> 
   </div>
 </div>
 
@@ -25,15 +25,15 @@
   <div class="stats">
   <div class="single-stat">
   <p class="stat-name">WPM:</p> <!-- WPM -->
-  <p class="stat-value">40</p>
+  <p class="stat-value WPM-stat-value">40</p>
   </div>
-   <div class="single-stat">
+   <div class="single-stat single-stat-accuracy">
    <p class="stat-name">Accuracy:</p> <!-- Accuracy -->
-    <p class="stat-value"><span>94</span>%</p>
+    <p class="stat-value Accuracy-stat-value"><span>94</span>%</p>
   </div>
   <div class="single-stat">
   <p class="stat-name">Time:</p> <!-- Time -->
-  <p class="stat-value">0:46</p>
+  <p class="stat-value Time-stat-value">0:46</p>
   </div>
 </div>
 
@@ -44,6 +44,7 @@
     <p class="decision-name">Hard</p>
     <i class="fa-solid fa-chevron-down"></i>
    </div>
+   <div class="choices">
   <div class="choice">
     <input type="radio" id="easy" name="difficulty-choices" value="Easy">
     <label for="easy">Easy</label>
@@ -57,6 +58,7 @@
     <label for="hard">Hard</label>
   </div>
   </div>
+  </div>
 
   <div class="mode">
   <p class="difficulty-and-mode-title">Mode:</p>
@@ -64,6 +66,7 @@
     <p class="decision-name">Timed (60s)</p>
     <i class="fa-solid fa-chevron-down"></i>
   </div>
+  <div class="choices">
   <div class="choice">
     <input type="radio" id="timed" name="mode-choices" value="Timed">
     <label for="timed">Timed (60s)</label>
@@ -71,6 +74,7 @@
   <div class="choice">
     <input type="radio" id="passage" name="mode-choices" value="Passage">
     <label for="timed">Passage</label>
+  </div>
   </div>
   </div>
 
