@@ -53,7 +53,7 @@
     <input type="radio" id="medium" name="difficulty-choices" class="radio-buttons"  value="Medium">
     <label for="medium">Medium</label>
    </div>
-  <div class="choice">
+  <div class="choice hard-choice">
     <input type="radio" id="hard" name="difficulty-choices"  class="radio-buttons" value="Hard">
     <label for="hard">Hard</label>
   </div>
@@ -71,7 +71,7 @@
     <input type="radio" id="timed" name="mode-choices" class="radio-buttons"  value="Timed">
     <label for="timed">Timed (60s)</label>
   </div>
-  <div class="choice">
+  <div class="choice passage-choice">
     <input type="radio" id="passage" name="mode-choices" class="radio-buttons"  value="Passage">
     <label for="passage">Passage</label>
   </div>
@@ -85,23 +85,26 @@
   <div class="button-and-text">
   <button class="start-button">Start Typing Test</button>
   
- <p>Or click the text and start typing</p> 
+ <p class="start-text">Or click the text and start typing</p> 
 
  </div>
-<textarea name="text-box" id="text-box"></textarea>
+<p class="text-wall"></p>
 
   <!-- Test Complete Start -->
 <div class="results">
-  <h3>Test Complete!</h3>
-  <p>Solid run. Keep pushing to beat your high score.</p>
+  <div class="result-intro">
+    <img src="assets/images/icon-completed.svg" alt="icon-completed">
+  <h3>Baseline established!</h3>
+  <p>You've set the bar! Now the real challenge begins—time to beat it.</p>
+  </div>
 <div class="results-stats">
    <div class="result-single-stat">
   <p class="stat-name">WPM:</p> <!-- WPM -->
-  <p class="stat-value">40</p>
+  <p class="stat-value">85</p>
   </div>
     <div class="result-single-stat">
    <p class="stat-name">Accuracy:</p> <!-- Accuracy -->
-    <p class="stat-value"><span>94</span>%</p>
+    <p class="stat-value"><span>90</span>%</p>
   </div>
   <div class="result-single-stat">
   <p class="stat-name">Characters:</p> <!-- Time -->

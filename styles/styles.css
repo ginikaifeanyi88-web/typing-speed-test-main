@@ -70,8 +70,9 @@ body {
 }
 
 .stats-difficulty-and-mode {
+
     margin-top: 30px;
-    display: grid;
+    display: none;
     grid-template-columns: 1fr;
     grid-template-rows: auto auto;
 }
@@ -172,14 +173,28 @@ margin-left: 4px;
 
 .easy-choice {
     border-bottom: 1px solid hsl(240, 1%, 59%);
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
 }
 
 .medium-choice {
     border-bottom: 1px solid hsl(240, 1%, 59%);
 }
 
+.hard-choice {
+      border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
 .timed-choice {
     border-bottom: 1px solid hsl(240, 1%, 59%);  
+     border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+.passage-choice {
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
 }
 label {
     margin-left: 3px;
@@ -193,21 +208,40 @@ label:hover{
 .radio-buttons:hover {
 cursor: pointer;
 }
-
+.button-and-text{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+           position: absolute;
+    z-index: 1;
+    top: 340px;
+   place-self: center; 
+  inset: 0;
+  display: none;
+}
 .start-button {
     background-color:  hsl(214, 100%, 55%);
     color: #fff;
     border-style: none;
     padding: 10px;
     border-radius: 6px;
+ 
 }
-
+.start-text {
+    color: #fff;
+    font-weight: bold;
+    margin-top: 10px;
+}
 .start-button:hover{
     cursor: pointer;
 }
 
 .text {
     margin-top: 26px;
+}
+
+.result-intro {
+    text-align: center;
 }
   .attribution { 
     margin-top: auto;
@@ -217,3 +251,5 @@ cursor: pointer;
     .attribution a {
          color: hsl(228, 45%, 44%); 
     }
+
+
