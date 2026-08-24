@@ -72,7 +72,7 @@ body {
 .stats-difficulty-and-mode {
 
     margin-top: 30px;
-    display: grid;
+    display: none;
     /* grid */
     grid-template-columns: 1fr;
     grid-template-rows: auto auto;
@@ -245,10 +245,28 @@ cursor: pointer;
 
 .text {
     margin-top: 26px;
+    margin-bottom:  50px;
 }
 
 .results {
-    display: none;
+ 
+    display: block;
+}
+
+.red-star {
+    position: absolute;
+    z-index: 1;
+    width: 23px;
+    left: 30px;
+    top: 100px;
+}
+
+.yellow-star {
+    position: absolute;
+    z-index: 1;
+    width: 23px;
+    left: 290px;
+    top: 560px;
 }
 
 .result-intro {
@@ -436,5 +454,28 @@ padding-left: 2vw;
     padding: 5px;
       border: 1px solid hsl(240, 1%, 59%);
     border-radius: 10px;
+}
+.results {
+    display: block;
+}
+
+.results-stats {
+    grid-template-rows: auto;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 40%;
+    margin: 50px auto;
+}
+
+.red-star {
+    width: 30px;
+    left: 190px;
+    top: 160px;
+}
+
+.yellow-star {
+
+    width: 37px;
+    left: 980px;
+    top: 450px;
 }
 }
