@@ -23,7 +23,7 @@
 <div class="stats-difficulty-and-mode">
 
   <div class="stats">
-  <div class="single-stat">
+  <div class="single-stat single-stat-WPM">
   <p class="stat-name">WPM:</p> <!-- WPM -->
   <p class="stat-value WPM-stat-value">0</p>
   </div>
@@ -31,7 +31,7 @@
    <p class="stat-name">Accuracy:</p> <!-- Accuracy -->
     <p class="stat-value Accuracy-stat-value"><span>100</span>%</p>
   </div>
-  <div class="single-stat">
+  <div class="single-stat single-stat-time">
   <p class="stat-name">Time:</p> <!-- Time -->
   <p class="stat-value Time-stat-value">0:60</p>
   </div>
@@ -39,12 +39,12 @@
 
   <div class="difficulty-and-mode">
     <div class="difficulty">
-  <p class="difficulty-and-mode-title">Difficulty:</p>
+  <p class="difficulty-and-mode-title difficulty-title">Difficulty:</p>
    <div class="decision">
     <p class="decision-name">Hard</p>
     <i class="fa-solid fa-chevron-down"></i>
    </div>
-   <div class="choices">
+   <div class="choices choices-difficulty">
   <div class="choice easy-choice">
     <input type="radio" id="easy" name="difficulty-choices" class="radio-buttons" value="Easy">
     <label for="easy">Easy</label>
@@ -61,12 +61,12 @@
   </div>
 
   <div class="mode">
-  <p class="difficulty-and-mode-title">Mode:</p>
+  <p class="difficulty-and-mode-title mode-title">Mode:</p>
   <div class="decision">
     <p class="decision-name">Timed (60s)</p>
     <i class="fa-solid fa-chevron-down"></i>
   </div>
-  <div class="choices">
+  <div class="choices choices-mode">
   <div class="choice timed-choice">
     <input type="radio" id="timed" name="mode-choices" class="radio-buttons"  value="Timed">
     <label for="timed">Timed (60s)</label>
@@ -88,32 +88,35 @@
  <p class="start-text">Or click the text and start typing</p> 
 
  </div>
-<p class="text-wall"></p>
+<p class="text-wall">She walked to the store to buy some bread and milk. The shop was busy but she found what she needed quickly. On her way home, she saw a friend and waved.</p>
 
   <!-- Test Complete Start -->
 <div class="results">
   <div class="result-intro">
-    <img src="assets/images/icon-completed.svg" alt="icon-completed">
-  <h3>Baseline established!</h3>
-  <p>You've set the bar! Now the real challenge begins—time to beat it.</p>
+    <img src="assets/images/icon-completed.svg" alt="icon-completed" class="baseline-image">
+    <div class="results-message-container">
+  <h3 class="results-title">Baseline established!</h3>
+  <p class="results-message">You've set the bar! Now the real challenge begins—time to beat it.</p>
+  </div>
   </div>
 <div class="results-stats">
    <div class="result-single-stat">
   <p class="stat-name">WPM:</p> <!-- WPM -->
-  <p class="stat-value">85</p>
+  <p class="stat-value result-stat-WPM">85</p>
   </div>
     <div class="result-single-stat">
    <p class="stat-name">Accuracy:</p> <!-- Accuracy -->
-    <p class="stat-value"><span>90</span>%</p>
+    <p class="stat-value result-stat-accuracy"><span class="result-stat-accuracy-value">90</span>%</p>
   </div>
   <div class="result-single-stat">
   <p class="stat-name">Characters:</p> <!-- Time -->
-  <p class="stat-value">120/5</p>
+  <p class="stat-value result-stat-characters"><span class="result-stat-characters-correct">120</span>/<span class="result-stat-characters-wrong">5</span></p>
   </div>
   </div>
 
 <div class="go-again-button">
-  Go Again
+  <p>Beat this score </p>
+ <i class="fa-solid fa-rotate-left retry-icon"></i>
   </div>
   <!-- Test Complete End -->
 
@@ -124,5 +127,6 @@
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>. 
     Coded by <a href="#">Your Name Here</a>.
   </footer>
+  <script src="/scripts/main.js" type="module"></script>
 </body>
 </html>
