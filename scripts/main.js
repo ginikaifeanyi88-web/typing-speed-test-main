@@ -1,6 +1,9 @@
+// importing data from json file
 import jsonData from './data/data.json' with { type: "json" };
 console.log(jsonData);
 
+
+// radio button and related variable declarations
 const easyChoice = document.querySelector(".easy-choice");
 const mediumChoice = document.querySelector(".medium-choice");
 const hardChoice = document.querySelector(".hard-choice");
@@ -14,11 +17,15 @@ const passageLabel = document.querySelector("#passage-label");
 let chosenDifficulty = localStorage.getItem("chosenDifficulty");
 let chosenMode = localStorage.getItem("chosenMode");
 
+// executing initialLoad function
 initialLoad();
 
+// loading data to text wall (currently a work in progress)
 const textWall = document.querySelector(".text-wall");
 textWall.innerHTML =  jsonData.easy[5].text;
 
+
+// event listeners for start button and text wall
 const startButton = document.querySelector(".start-button");
 const startButtonAndText = document.querySelector(".button-and-text");
 startButton.addEventListener("click", ()=>{
@@ -31,7 +38,7 @@ textWall.addEventListener("click", ()=>{
     startButtonAndText.style.display = "none";
 })
 
-
+// radio button event listeners
 easyChoice.addEventListener("click", ()=>{
     document.querySelector("#easy").checked = true;
             localStorage.setItem("chosenDifficulty", "easy");
@@ -104,6 +111,8 @@ passageChoice.addEventListener("click", ()=>{
             }
 })
 
+
+// intialLoad function
 function initialLoad() {
     if (localStorage.getItem("chosenMode") == undefined || localStorage.getItem("chosenMode") == null || localStorage.getItem("chosenMode") == "") {
         localStorage.setItem("chosenMode",  "Timed"); 
