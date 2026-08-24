@@ -1,5 +1,6 @@
-// importing data from json file
+// importing data from json file and functions
 import jsonData from './data/data.json' with { type: "json" };
+import { returnModeStyles, returnDifficultyStyles } from './controllers/styleRelatedFunctions.js';
 console.log(jsonData);
 
 
@@ -14,6 +15,8 @@ const timedChoice = document.querySelector(".timed-choice");
 const passageChoice = document.querySelector(".passage-choice");
 const timedLabel = document.querySelector("#timed-label");
 const passageLabel = document.querySelector("#passage-label");
+const difficultyDecisionName = document.querySelector(".difficulty-decision-name");
+const modeDecisionName = document.querySelector(".mode-decision-name");
 let chosenDifficulty = localStorage.getItem("chosenDifficulty");
 let chosenMode = localStorage.getItem("chosenMode");
 
@@ -51,6 +54,10 @@ easyChoice.addEventListener("click", ()=>{
                 mediumLabel.style.color ="";
                 hardChoice.style.border = "";
                 hardLabel.style.color ="";
+                difficultyDecisionName.innerHTML = "Easy";
+            }
+            if (screen.width < 1000) {
+                difficultyDecisionName.innerHTML = "Easy";
             }
 })
 
@@ -66,6 +73,10 @@ mediumChoice.addEventListener("click", ()=>{
                 easyLabel.style.color ="";
                 hardChoice.style.border = "";
                 hardLabel.style.color ="";
+                difficultyDecisionName.innerHTML = "Medium";
+            }
+            if (screen.width < 1000) {
+                difficultyDecisionName.innerHTML = "Medium";
             }
 })
 
@@ -81,6 +92,10 @@ hardChoice.addEventListener("click", ()=>{
                 easyLabel.style.color ="";
                 mediumChoice.style.border = "";
                 mediumLabel.style.color ="";
+                 difficultyDecisionName.innerHTML = "Hard";
+            }
+            if (screen.width < 1000) {
+                difficultyDecisionName.innerHTML = "Hard";
             }
 })
 
@@ -94,7 +109,10 @@ timedChoice.addEventListener("click", ()=>{
                 timedLabel.style.color ="hsl(214, 100%, 55%)";
                 passageChoice.style.border = "";
                 passageLabel.style.color ="";
-
+                modeDecisionName.innerHTML = "Timed (60s)";
+            }
+             if (screen.width < 1000) {
+                modeDecisionName.innerHTML = "Timed (60s)";
             }
 })
 
@@ -108,6 +126,10 @@ passageChoice.addEventListener("click", ()=>{
                 passageLabel.style.color ="hsl(214, 100%, 55%)";
                 timedChoice.style.border = "";
                 timedLabel.style.color ="";
+                modeDecisionName.innerHTML = "Passage";
+            }
+            if (screen.width < 1000) {
+                modeDecisionName.innerHTML = "Passage";
             }
 })
 
@@ -117,46 +139,27 @@ function initialLoad() {
     if (localStorage.getItem("chosenMode") == undefined || localStorage.getItem("chosenMode") == null || localStorage.getItem("chosenMode") == "") {
         localStorage.setItem("chosenMode",  "Timed"); 
     }
-    if (localStorage.getItem("chosenMode") =="Timed" && screen.width >= 1000) {
-        document.querySelector("#timed").checked = true;
-        timedChoice.style.border = "1px solid hsl(214, 100%, 55%)";
-                timedLabel.style.color ="hsl(214, 100%, 55%)";
-                passageChoice.style.border = "";
-                passageLabel.style.color ="";
-    } else if  (localStorage.getItem("chosenMode") =="Passage" && screen.width >= 1000) {
-        document.querySelector("#passage").checked = true;
-        passageChoice.style.border = "1px solid hsl(214, 100%, 55%)";
-                passageLabel.style.color ="hsl(214, 100%, 55%)";
-                timedChoice.style.border = "";
-                timedLabel.style.color ="";
-    }
+  let modeStyles =  returnModeStyles(screen.width,  localStorage.getItem("chosenMode"));
+   document.querySelector("#timed").checked = modeStyles[0];
+   document.querySelector("#passage").checked = modeStyles[1];
+   timedChoice.style.border = modeStyles[2];
+   timedLabel.style.color = modeStyles[3];
+   passageChoice.style.border = modeStyles[4]
+    passageLabel.style.color = modeStyles[5];
+   modeDecisionName.innerHTML = modeStyles[6]
     if (localStorage.getItem("chosenDifficulty") == undefined || localStorage.getItem("chosenDifficulty") == null || localStorage.getItem("chosenDifficulty") == "") {
         localStorage.setItem("chosenDifficulty",  "easy"); 
     }
-    if (localStorage.getItem("chosenDifficulty") =="easy" && screen.width >= 1000) {
-        document.querySelector("#easy").checked = true;
-        easyChoice.style.border = "1px solid hsl(214, 100%, 55%)";
-                easyLabel.style.color ="hsl(214, 100%, 55%)";
-                mediumChoice.style.border = "";
-                mediumLabel.style.color ="";
-                hardChoice.style.border = "";
-                hardLabel.style.color ="";
-    } else if  (localStorage.getItem("chosenDifficulty") =="medium" && screen.width >= 1000) {
-        document.querySelector("#medium").checked = true;
-        mediumChoice.style.border = "1px solid hsl(214, 100%, 55%)";
-                mediumLabel.style.color ="hsl(214, 100%, 55%)";
-                easyChoice.style.border = "";
-                easyLabel.style.color ="";
-                hardChoice.style.border = "";
-                hardLabel.style.color ="";
-    } else if  (localStorage.getItem("chosenDifficulty") =="hard" && screen.width >= 1000) {
-        document.querySelector("#hard").checked = true;
-        hardChoice.style.border = "1px solid hsl(214, 100%, 55%)";
-                hardLabel.style.color ="hsl(214, 100%, 55%)";
-                easyChoice.style.border = "";
-                easyLabel.style.color ="";
-                mediumChoice.style.border = "";
-                mediumLabel.style.color ="";
-    }
+    let difficultyStyles = returnDifficultyStyles(screen.width, localStorage.getItem("chosenDifficulty"));
+        document.querySelector("#easy").checked = difficultyStyles[0];
+        document.querySelector("#medium").checked = difficultyStyles[1];
+        document.querySelector("#medium").checked = difficultyStyles[2];
+        easyChoice.style.border = difficultyStyles[3];
+        easyLabel.style.color = difficultyStyles[4];
+         mediumChoice.style.border = difficultyStyles[5];
+         mediumLabel.style.color =difficultyStyles[6];
+         hardChoice.style.border = difficultyStyles[7];
+         hardLabel.style.color = difficultyStyles[8];
+         difficultyDecisionName.innerHTML = difficultyStyles[9];
 }
 
