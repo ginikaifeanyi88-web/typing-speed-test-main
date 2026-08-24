@@ -30,6 +30,7 @@ body {
     margin-top: 10px;
     margin-left: 11px;
     margin-right: 11px;
+    overflow-x: hidden;
 }
 
 .header {
@@ -245,12 +246,12 @@ cursor: pointer;
 
 .text {
     margin-top: 26px;
-    margin-bottom:  50px;
+    margin-bottom:  220px;
 }
 
 .results {
  
-    display: block;
+    display: none;
 }
 
 .red-star {
@@ -267,6 +268,18 @@ cursor: pointer;
     width: 23px;
     left: 290px;
     top: 560px;
+}
+
+.confetti {
+    display: none;
+      position: absolute;
+    z-index: 1;
+width: 950px;
+ left: 50%;
+    transform: translate(-50%, 0);
+bottom: -125px;
+
+
 }
 
 .result-intro {
@@ -455,9 +468,6 @@ padding-left: 2vw;
       border: 1px solid hsl(240, 1%, 59%);
     border-radius: 10px;
 }
-.results {
-    display: block;
-}
 
 .results-stats {
     grid-template-rows: auto;
@@ -477,5 +487,18 @@ padding-left: 2vw;
     width: 37px;
     left: 980px;
     top: 450px;
+}
+
+.confetti {
+
+width: 1350px;
+bottom: -134px;
+
+
+}
+
+.text {
+
+    margin-bottom:  300px;
 }
 }
