@@ -130,7 +130,7 @@ function initialLoad() {
                 timedChoice.style.border = "";
                 timedLabel.style.color ="";
     }
-    if (localStorage.getItem("chosenDifficulty") == undefined || localStorage.getItem("chosenMode") == null || localStorage.getItem("chosenMode") == "") {
+    if (localStorage.getItem("chosenDifficulty") == undefined || localStorage.getItem("chosenDifficulty") == null || localStorage.getItem("chosenDifficulty") == "") {
         localStorage.setItem("chosenDifficulty",  "easy"); 
     }
     if (localStorage.getItem("chosenDifficulty") =="easy" && screen.width >= 1000) {
