@@ -27,7 +27,7 @@ initialLoad();
 
 // loading data to text wall (currently a work in progress)
 const textWall = document.querySelector(".text-wall");
-textWall.innerHTML =  jsonData.easy[5].text;
+textWall.setAttribute("placeholder", jsonData.easy[5].text);
 
 
 // event listeners for start button and text wall
@@ -140,18 +140,21 @@ const modeButton = document.querySelector(".mode");
 const difficultyButton = document.querySelector(".difficulty");
 const bodyButton = document.querySelector("body");
 const decisions =document.querySelectorAll(".decision");
+const decisionIcons = document.querySelectorAll(".decision > i");
 
 modeButton.addEventListener("click", ()=>{
     modeMenu.style.display="block";
+    difficultyMenu.style.display="";
 });
 
 difficultyButton.addEventListener("click", ()=>{
     difficultyMenu.style.display="block";
+    modeMenu.style.display="";
 });
 
 bodyButton.addEventListener("click", (event)=>{
-     if (event.target ==  difficultyButton|| event.target == modeButton || event.target == modeMenu || event.target == difficultyMenu|| event.target == decisions[0]|| event.target == decisions[1]) {
-        console.log("hello");
+     if (event.target ==  difficultyButton|| event.target == modeButton || event.target == modeMenu || event.target == difficultyMenu|| event.target == decisions[0]|| event.target == decisions[1]|| event.target== difficultyDecisionName||event.target == modeDecisionName|| event.target ==decisionIcons[0] || event.target == decisionIcons[1]) {
+      
     } else {
      modeMenu.style.display="";
       difficultyMenu.style.display="";
