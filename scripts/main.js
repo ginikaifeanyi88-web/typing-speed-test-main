@@ -5,6 +5,8 @@ console.log(jsonData);
 
 
 // radio button and related variable declarations
+const difficultyMenu = document.querySelector(".choices-difficulty");
+const modeMenu = document.querySelector(".choices-mode");
 const easyChoice = document.querySelector(".easy-choice");
 const mediumChoice = document.querySelector(".medium-choice");
 const hardChoice = document.querySelector(".hard-choice");
@@ -133,6 +135,29 @@ passageChoice.addEventListener("click", ()=>{
             }
 })
 
+//mode and difficulty button event listeners in mobile
+const modeButton = document.querySelector(".mode");
+const difficultyButton = document.querySelector(".difficulty");
+const bodyButton = document.querySelector("body");
+const decisions =document.querySelectorAll(".decision");
+
+modeButton.addEventListener("click", ()=>{
+    modeMenu.style.display="block";
+});
+
+difficultyButton.addEventListener("click", ()=>{
+    difficultyMenu.style.display="block";
+});
+
+bodyButton.addEventListener("click", (event)=>{
+     if (event.target ==  difficultyButton|| event.target == modeButton || event.target == modeMenu || event.target == difficultyMenu|| event.target == decisions[0]|| event.target == decisions[1]) {
+        console.log("hello");
+    } else {
+     modeMenu.style.display="";
+      difficultyMenu.style.display="";
+    }
+    
+})
 
 // intialLoad function
 function initialLoad() {
