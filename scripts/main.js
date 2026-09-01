@@ -229,7 +229,7 @@ function initialLoad() {
          difficultyDecisionName.innerHTML = difficultyStyles[9];
 }
 
-//
+// timer function
 function myTimer() {
  var start = Date.now();
 let currentSecond  = 0;
