@@ -175,18 +175,13 @@ bodyButton.addEventListener("click", (event)=>{
 // text wall typing event listener
 textWall.addEventListener("input", ()=>{
     let textWallValue = textWall.textContent;
-     
-       console.log(placeHolder.childNodes[3].textContent.charCodeAt(0));
+    console.log(textWallValue);
     placeHolder.childNodes.forEach((node)=>{
         node.style.color = "";
         node.style.textDecoration = "";
         
     })
-
     for (let i =0; i<stringArr.length;i++) {
-
-        
-         
           if (textWallValue[i] == stringArr[i]) {
             placeHolder.childNodes[i].style.color = "green";
             placeHolder.childNodes[i].style.textDecoration = "";
@@ -198,9 +193,7 @@ textWall.addEventListener("input", ()=>{
                 placeHolder.childNodes[i].style.color = "green";
             placeHolder.childNodes[i].style.textDecoration = "";
           }
-    }
-    
-    
+    } 
 })
 
 // intialLoad function
