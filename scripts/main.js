@@ -36,6 +36,9 @@ stringArr.forEach((character)=>{
 });
 placeHolder.innerHTML = placeHolderText;
 
+// time in dom declaration
+const timeStatvalue = document.querySelector(".Time-stat-value");
+
 // event listeners for start button and text wall
 const startButton = document.querySelector(".start-button");
 const startButtonAndText = document.querySelector(".button-and-text");
@@ -43,12 +46,13 @@ startButton.addEventListener("click", ()=>{
     placeHolder.style.filter = "blur(0px)";
     startButtonAndText.style.display = "none";
     textWall.focus();
+    myTimer();
 });
 
 textWall.addEventListener("click", ()=>{
-    
     placeHolder.style.filter = "blur(0px)";
     startButtonAndText.style.display = "none";
+    myTimer();
 })
 
 // radio button event listeners
@@ -183,14 +187,14 @@ textWall.addEventListener("input", ()=>{
     })
     for (let i =0; i<stringArr.length;i++) {
           if (textWallValue[i] == stringArr[i]) {
-            placeHolder.childNodes[i].style.color = "green";
+            placeHolder.childNodes[i].style.color = "hsl(140, 63%, 57%)";
             placeHolder.childNodes[i].style.textDecoration = "";
           } else if ((textWallValue[i] !== stringArr[i]) && (textWallValue[i] !== undefined) && !(placeHolder.childNodes[i].textContent.charCodeAt(0) == 32 && textWallValue.charCodeAt(i) == 160)) {
-            placeHolder.childNodes[i].style.color = "red";
+            placeHolder.childNodes[i].style.color = " hsl(354, 63%, 57%)";
             placeHolder.childNodes[i].style.textDecoration = "underline";
           }  
           else if (placeHolder.childNodes[i].textContent.charCodeAt(0) == 32 && textWallValue.charCodeAt(i) == 160) {
-                placeHolder.childNodes[i].style.color = "green";
+                placeHolder.childNodes[i].style.color = "hsl(140, 63%, 57%)";
             placeHolder.childNodes[i].style.textDecoration = "";
           }
     } 
@@ -225,3 +229,24 @@ function initialLoad() {
          difficultyDecisionName.innerHTML = difficultyStyles[9];
 }
 
+//
+function myTimer() {
+ var start = Date.now();
+let currentSecond  = 0;
+    const myInterval = setInterval(function() {
+    var delta = Date.now() - start; // milliseconds elapsed since start
+
+    console.log(Math.floor(delta / 1000)); // in seconds
+    currentSecond = Math.floor(delta / 1000);
+    if (currentSecond < 10){
+        timeStatvalue.innerHTML = `0:0${currentSecond}`;
+    } else if (currentSecond > 10) {
+    timeStatvalue.innerHTML = `0:${currentSecond}`;
+    } 
+    if (currentSecond==60) {
+        clearInterval(myInterval);
+    }
+    // alternatively just show wall clock time:
+    // console.log(new Date().toUTCString());
+}, 1000); // update about every second
+}
