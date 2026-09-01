@@ -26,20 +26,28 @@ let chosenMode = localStorage.getItem("chosenMode");
 initialLoad();
 
 // loading data to text wall (currently a work in progress)
+let placeHolderText = "";
+let stringArr = "";
 const textWall = document.querySelector(".text-wall");
-textWall.setAttribute("placeholder", jsonData.easy[5].text);
-
+const placeHolder = document.querySelector(".placeholder")
+stringArr = jsonData.hard[8].text. split('');
+stringArr.forEach((character)=>{
+    placeHolderText+= `<span>${character}</span>`;
+});
+placeHolder.innerHTML = placeHolderText;
 
 // event listeners for start button and text wall
 const startButton = document.querySelector(".start-button");
 const startButtonAndText = document.querySelector(".button-and-text");
 startButton.addEventListener("click", ()=>{
-    textWall.style.filter = "blur(0px)";
+    placeHolder.style.filter = "blur(0px)";
     startButtonAndText.style.display = "none";
+    textWall.focus();
 });
 
 textWall.addEventListener("click", ()=>{
-    textWall.style.filter = "blur(0px)";
+    
+    placeHolder.style.filter = "blur(0px)";
     startButtonAndText.style.display = "none";
 })
 
@@ -159,6 +167,39 @@ bodyButton.addEventListener("click", (event)=>{
      modeMenu.style.display="";
       difficultyMenu.style.display="";
     }
+    
+})
+
+
+
+// text wall typing event listener
+textWall.addEventListener("input", ()=>{
+    let textWallValue = textWall.textContent;
+     
+       console.log(placeHolder.childNodes[3].textContent.charCodeAt(0));
+    placeHolder.childNodes.forEach((node)=>{
+        node.style.color = "";
+        node.style.textDecoration = "";
+        
+    })
+
+    for (let i =0; i<stringArr.length;i++) {
+
+        
+         
+          if (textWallValue[i] == stringArr[i]) {
+            placeHolder.childNodes[i].style.color = "green";
+            placeHolder.childNodes[i].style.textDecoration = "";
+          } else if ((textWallValue[i] !== stringArr[i]) && (textWallValue[i] !== undefined) && !(placeHolder.childNodes[i].textContent.charCodeAt(0) == 32 && textWallValue.charCodeAt(i) == 160)) {
+            placeHolder.childNodes[i].style.color = "red";
+            placeHolder.childNodes[i].style.textDecoration = "underline";
+          }  
+          else if (placeHolder.childNodes[i].textContent.charCodeAt(0) == 32 && textWallValue.charCodeAt(i) == 160) {
+                placeHolder.childNodes[i].style.color = "green";
+            placeHolder.childNodes[i].style.textDecoration = "";
+          }
+    }
+    
     
 })
 
