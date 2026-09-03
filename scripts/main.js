@@ -273,6 +273,7 @@ const resultAccuracy = document.querySelector(".result-stat-accuracy-value");
 const resultRightValues = document.querySelector(".result-stat-characters-correct");
 const resultWrongValues = document.querySelector(".result-stat-characters-wrong");
 const resultMessage = document.querySelector(".results-title");
+
 function myTimer() {
  var start = Date.now();
 let currentSecond  = 0;
