@@ -188,6 +188,8 @@ bodyButton.addEventListener("click", (event)=>{
  let  accuracyPercentage =0;
      let wordsPerMin = 0;
      let textLengthChecker=0;
+
+     
 textWall.addEventListener("input", ()=>{
     let textWallValue = textWall.textContent;
         greenNodesResult = 0;
@@ -214,15 +216,10 @@ textWall.addEventListener("input", ()=>{
              greenNodes +=1;
              greenNodesResult+=1;
           }
-      
     } 
-      let typedCharacters = greenNodes + redNode;
-        accuracyPercentage = (Math.round((greenNodes / typedCharacters)*100));
-        if (accuracyPercentage >0) {
-            accuracyStatvalue.innerHTML = accuracyPercentage;
-        } else {
-            accuracyStatvalue.innerHTML = 0;
-        }
+      let typedCharacters = greenNodesResult + redNodeResult;
+        accuracyPercentage = (Math.round((greenNodesResult / typedCharacters)*100));
+        realTimeAccuracy(accuracyPercentage);
         wordsPerMin = (textWallValue.length /5) /1;
         if (textWallValue.length > textLengthChecker) {
             textLengthChecker = textWallValue.length;
@@ -268,6 +265,7 @@ const resultWPM = document.querySelector(".result-stat-WPM");
 const resultAccuracy = document.querySelector(".result-stat-accuracy-value");
 const resultRightValues = document.querySelector(".result-stat-characters-correct");
 const resultWrongValues = document.querySelector(".result-stat-characters-wrong");
+
 function myTimer() {
  var start = Date.now();
 let currentSecond  = 0;
@@ -283,6 +281,14 @@ let currentSecond  = 0;
     } 
     if (currentSecond==60) {
         clearInterval(myInterval);
+        generateResult();
+    }
+
+}, 1000); 
+}
+
+//generatE result function
+function generateResult() {
         wrapperDiv.style.display ="none";
         restartTestDiv.style.display ="none";
         statsBar.style.display ="none";
@@ -291,7 +297,12 @@ let currentSecond  = 0;
         resultAccuracy.innerHTML = (Math.round((greenNodes/ (greenNodes + redNode))*100));
         resultRightValues.innerHTML = greenNodesResult;
         resultWrongValues.innerHTML = redNodeResult;
-    }
+}
 
-}, 1000); 
+function realTimeAccuracy(accuracyPercentage) {
+    if (accuracyPercentage >0) {
+            accuracyStatvalue.innerHTML = accuracyPercentage;
+        } else {
+            accuracyStatvalue.innerHTML = 0;
+        }
 }
