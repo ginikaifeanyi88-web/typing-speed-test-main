@@ -19,6 +19,7 @@ const timedLabel = document.querySelector("#timed-label");
 const passageLabel = document.querySelector("#passage-label");
 const difficultyDecisionName = document.querySelector(".difficulty-decision-name");
 const modeDecisionName = document.querySelector(".mode-decision-name");
+const bestWPM = document.querySelector(".best-score-value");
 let chosenDifficulty = localStorage.getItem("chosenDifficulty");
 let chosenMode = localStorage.getItem("chosenMode");
 
@@ -227,8 +228,14 @@ textWall.addEventListener("input", ()=>{
         }
 })
 
+
 // intialLoad function
 function initialLoad() {
+    let initScoreArray = [0];
+    if (localStorage.getItem("wpmScore") == undefined || localStorage.getItem("wpmScore") == null || localStorage.getItem("wpmScore") == "") {
+        localStorage.setItem("wpmScore", JSON.stringify(initScoreArray));
+    }
+    bestWPM.innerHTML = returnHighScore(JSON.parse(localStorage.getItem("wpmScore")));
     if (localStorage.getItem("chosenMode") == undefined || localStorage.getItem("chosenMode") == null || localStorage.getItem("chosenMode") == "") {
         localStorage.setItem("chosenMode",  "Timed"); 
     }
@@ -265,7 +272,7 @@ const resultWPM = document.querySelector(".result-stat-WPM");
 const resultAccuracy = document.querySelector(".result-stat-accuracy-value");
 const resultRightValues = document.querySelector(".result-stat-characters-correct");
 const resultWrongValues = document.querySelector(".result-stat-characters-wrong");
-
+const resultMessage = document.querySelector(".results-title");
 function myTimer() {
  var start = Date.now();
 let currentSecond  = 0;
@@ -297,12 +304,33 @@ function generateResult() {
         resultAccuracy.innerHTML = (Math.round((greenNodes/ (greenNodes + redNode))*100));
         resultRightValues.innerHTML = greenNodesResult;
         resultWrongValues.innerHTML = redNodeResult;
+        let highScoreArray = JSON.parse(localStorage.getItem("wpmScore"));
+        if ((Math.round(wordsPerMin) > returnHighScore(highScoreArray))&&(highScoreArray.length !=1)) {
+            resultMessage.innerHTML = "High Score Smashed";
+        } else if (highScoreArray.length == 1){
+            resultMessage.innerHTML = "Baseline Established!";
+        }
+        highScoreArray.push(Math.round(wordsPerMin));
+        localStorage.setItem("wpmScore", JSON.stringify(highScoreArray));
+        bestWPM.innerHTML = returnHighScore(JSON.parse(localStorage.getItem("wpmScore")));
 }
 
+// puts accuracy to page while typing
 function realTimeAccuracy(accuracyPercentage) {
     if (accuracyPercentage >0) {
             accuracyStatvalue.innerHTML = accuracyPercentage;
         } else {
             accuracyStatvalue.innerHTML = 0;
         }
+}
+
+// return high score function
+function returnHighScore(array) {
+    let highestScore = 0;
+    array.forEach((item)=>{
+        if (item > highestScore) {
+            highestScore= item;
+        }
+    })
+    return highestScore;
 }
