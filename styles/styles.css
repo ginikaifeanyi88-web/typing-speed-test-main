@@ -256,6 +256,10 @@ border: none;
     margin-top: 10px;
 }
 
+.start-text:hover {
+    cursor: pointer;
+}
+
 .wrapper {
     position: relative;
 overflow: hidden;

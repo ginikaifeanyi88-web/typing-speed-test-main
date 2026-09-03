@@ -36,12 +36,15 @@ stringArr.forEach((character)=>{
 });
 placeHolder.innerHTML = placeHolderText;
 
-// time in dom declaration
+// time and accuracy in dom declaration
 const timeStatvalue = document.querySelector(".Time-stat-value");
+const accuracyStatvalue = document.querySelector(".Accuracy-stat-value > span");
+const WPMStatvalue = document.querySelector(".WPM-stat-value");
 
-// event listeners for start button and text wall
+// event listeners for start button and start text
 const startButton = document.querySelector(".start-button");
 const startButtonAndText = document.querySelector(".button-and-text");
+const startText = document.querySelector(".start-text");
 startButton.addEventListener("click", ()=>{
     placeHolder.style.filter = "blur(0px)";
     startButtonAndText.style.display = "none";
@@ -49,9 +52,10 @@ startButton.addEventListener("click", ()=>{
     myTimer();
 });
 
-textWall.addEventListener("click", ()=>{
+startText.addEventListener("click", ()=>{
     placeHolder.style.filter = "blur(0px)";
     startButtonAndText.style.display = "none";
+     textWall.focus();
     myTimer();
 })
 
@@ -179,7 +183,10 @@ bodyButton.addEventListener("click", (event)=>{
 // text wall typing event listener
 textWall.addEventListener("input", ()=>{
     let textWallValue = textWall.textContent;
-    console.log(textWallValue);
+    let greenNodes = 0;
+    let redNode = 0;
+ let  accuracyPercentage =0;
+
     placeHolder.childNodes.forEach((node)=>{
         node.style.color = "";
         node.style.textDecoration = "";
@@ -189,15 +196,30 @@ textWall.addEventListener("input", ()=>{
           if (textWallValue[i] == stringArr[i]) {
             placeHolder.childNodes[i].style.color = "hsl(140, 63%, 57%)";
             placeHolder.childNodes[i].style.textDecoration = "";
+             greenNodes +=1;
           } else if ((textWallValue[i] !== stringArr[i]) && (textWallValue[i] !== undefined) && !(placeHolder.childNodes[i].textContent.charCodeAt(0) == 32 && textWallValue.charCodeAt(i) == 160)) {
             placeHolder.childNodes[i].style.color = " hsl(354, 63%, 57%)";
             placeHolder.childNodes[i].style.textDecoration = "underline";
+            redNode +=1;
           }  
           else if (placeHolder.childNodes[i].textContent.charCodeAt(0) == 32 && textWallValue.charCodeAt(i) == 160) {
                 placeHolder.childNodes[i].style.color = "hsl(140, 63%, 57%)";
             placeHolder.childNodes[i].style.textDecoration = "";
+             greenNodes +=1;
           }
+          
+
+        let typedCharacters = greenNodes + redNode;
+        accuracyPercentage = (Math.round((greenNodes / typedCharacters)*100));
+        if (accuracyPercentage >0) {
+            accuracyStatvalue.innerHTML = accuracyPercentage;
+        } else {
+            accuracyStatvalue.innerHTML = 0;
+        }
+        
     } 
+    let wordsPerMin = (textWallValue.length /5) /1;
+    WPMStatvalue.innerHTML = Math.round(wordsPerMin);
 })
 
 // intialLoad function
@@ -236,7 +258,7 @@ let currentSecond  = 0;
     const myInterval = setInterval(function() {
     var delta = Date.now() - start; // milliseconds elapsed since start
 
-    console.log(Math.floor(delta / 1000)); // in seconds
+
     currentSecond = Math.floor(delta / 1000);
     if (currentSecond < 10){
         timeStatvalue.innerHTML = `0:0${currentSecond}`;
@@ -246,7 +268,6 @@ let currentSecond  = 0;
     if (currentSecond==60) {
         clearInterval(myInterval);
     }
-    // alternatively just show wall clock time:
-    // console.log(new Date().toUTCString());
-}, 1000); // update about every second
+
+}, 1000); 
 }
