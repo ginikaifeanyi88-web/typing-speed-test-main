@@ -181,45 +181,53 @@ bodyButton.addEventListener("click", (event)=>{
 
 
 // text wall typing event listener
-textWall.addEventListener("input", ()=>{
-    let textWallValue = textWall.textContent;
     let greenNodes = 0;
     let redNode = 0;
+        let greenNodesResult = 0;
+    let redNodeResult = 0;
  let  accuracyPercentage =0;
-
+     let wordsPerMin = 0;
+     let textLengthChecker=0;
+textWall.addEventListener("input", ()=>{
+    let textWallValue = textWall.textContent;
+        greenNodesResult = 0;
+     redNodeResult = 0;
     placeHolder.childNodes.forEach((node)=>{
         node.style.color = "";
         node.style.textDecoration = "";
-        
     })
     for (let i =0; i<stringArr.length;i++) {
           if (textWallValue[i] == stringArr[i]) {
             placeHolder.childNodes[i].style.color = "hsl(140, 63%, 57%)";
             placeHolder.childNodes[i].style.textDecoration = "";
              greenNodes +=1;
+             greenNodesResult+=1;
           } else if ((textWallValue[i] !== stringArr[i]) && (textWallValue[i] !== undefined) && !(placeHolder.childNodes[i].textContent.charCodeAt(0) == 32 && textWallValue.charCodeAt(i) == 160)) {
             placeHolder.childNodes[i].style.color = " hsl(354, 63%, 57%)";
             placeHolder.childNodes[i].style.textDecoration = "underline";
             redNode +=1;
+            redNodeResult+=1;
           }  
           else if (placeHolder.childNodes[i].textContent.charCodeAt(0) == 32 && textWallValue.charCodeAt(i) == 160) {
                 placeHolder.childNodes[i].style.color = "hsl(140, 63%, 57%)";
             placeHolder.childNodes[i].style.textDecoration = "";
              greenNodes +=1;
+             greenNodesResult+=1;
           }
-          
-
-        let typedCharacters = greenNodes + redNode;
+      
+    } 
+      let typedCharacters = greenNodes + redNode;
         accuracyPercentage = (Math.round((greenNodes / typedCharacters)*100));
         if (accuracyPercentage >0) {
             accuracyStatvalue.innerHTML = accuracyPercentage;
         } else {
             accuracyStatvalue.innerHTML = 0;
         }
-        
-    } 
-    let wordsPerMin = (textWallValue.length /5) /1;
-    WPMStatvalue.innerHTML = Math.round(wordsPerMin);
+        wordsPerMin = (textWallValue.length /5) /1;
+        if (textWallValue.length > textLengthChecker) {
+            textLengthChecker = textWallValue.length;
+             WPMStatvalue.innerHTML = Math.round(wordsPerMin);
+        }
 })
 
 // intialLoad function
@@ -252,6 +260,14 @@ function initialLoad() {
 }
 
 // timer function
+const wrapperDiv = document.querySelector(".wrapper");
+const restartTestDiv = document.querySelector(".restart-test");
+const statsBar = document.querySelector(".stats-difficulty-and-mode");
+const resultsDiv = document.querySelector(".results");
+const resultWPM = document.querySelector(".result-stat-WPM");
+const resultAccuracy = document.querySelector(".result-stat-accuracy-value");
+const resultRightValues = document.querySelector(".result-stat-characters-correct");
+const resultWrongValues = document.querySelector(".result-stat-characters-wrong");
 function myTimer() {
  var start = Date.now();
 let currentSecond  = 0;
@@ -267,6 +283,14 @@ let currentSecond  = 0;
     } 
     if (currentSecond==60) {
         clearInterval(myInterval);
+        wrapperDiv.style.display ="none";
+        restartTestDiv.style.display ="none";
+        statsBar.style.display ="none";
+        resultsDiv.style.display ="block";
+        resultWPM.innerHTML = Math.round(wordsPerMin);
+        resultAccuracy.innerHTML = (Math.round((greenNodes/ (greenNodes + redNode))*100));
+        resultRightValues.innerHTML = greenNodesResult;
+        resultWrongValues.innerHTML = redNodeResult;
     }
 
 }, 1000); 
