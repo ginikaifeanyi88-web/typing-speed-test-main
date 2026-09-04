@@ -374,6 +374,13 @@ bottom: -125px;
     padding: 10px 17px;
 }
 
+.result-stat-characters-correct {
+    color: hsl(140, 63%, 57%);
+}
+
+.result-stat-characters-wrong {
+    color: hsl(354, 63%, 57%);
+}
 .go-again-button {
     margin: auto;
     margin-top: 30px;

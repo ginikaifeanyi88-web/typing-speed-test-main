@@ -182,13 +182,13 @@ bodyButton.addEventListener("click", (event)=>{
 
 
 // text wall typing event listener
-    let greenNodes = 0;
-    let redNode = 0;
-        let greenNodesResult = 0;
-    let redNodeResult = 0;
+ let greenNodes = 0;
+ let redNode = 0;
+ let greenNodesResult = 0;
+ let redNodeResult = 0;
  let  accuracyPercentage =0;
-     let wordsPerMin = 0;
-     let textLengthChecker=0;
+ let wordsPerMin = 0;
+ let textLengthChecker=0;
 
      
 textWall.addEventListener("input", ()=>{
@@ -273,13 +273,14 @@ const resultAccuracy = document.querySelector(".result-stat-accuracy-value");
 const resultRightValues = document.querySelector(".result-stat-characters-correct");
 const resultWrongValues = document.querySelector(".result-stat-characters-wrong");
 const resultMessage = document.querySelector(".results-title");
+const resultSecondMessage = document.querySelector(".results-message");
 
 function myTimer() {
  var start = Date.now();
 let currentSecond  = 0;
     const myInterval = setInterval(function() {
     var delta = Date.now() - start; // milliseconds elapsed since start
-
+console.log(redNode);
 
     currentSecond = Math.floor(delta / 1000);
     if (currentSecond < 10){
@@ -302,14 +303,20 @@ function generateResult() {
         statsBar.style.display ="none";
         resultsDiv.style.display ="block";
         resultWPM.innerHTML = Math.round(wordsPerMin);
-        resultAccuracy.innerHTML = (Math.round((greenNodes/ (greenNodes + redNode))*100));
+        if (greenNodes == 0 && redNode == 0){
+             resultAccuracy.innerHTML = 0;
+        } else {
+             resultAccuracy.innerHTML = Math.round((greenNodes/ (greenNodes + redNode))*100);
+        }
         resultRightValues.innerHTML = greenNodesResult;
         resultWrongValues.innerHTML = redNodeResult;
         let highScoreArray = JSON.parse(localStorage.getItem("wpmScore"));
         if ((Math.round(wordsPerMin) > returnHighScore(highScoreArray))&&(highScoreArray.length !=1)) {
             resultMessage.innerHTML = "High Score Smashed";
+            resultSecondMessage.innerHTML = "You're getting faster. That was incredible typing!";
         } else if (highScoreArray.length == 1){
             resultMessage.innerHTML = "Baseline Established!";
+            resultSecondMessage,innerHTML = "You've set the bar! Now the real challenge begins—time to beat it.";
         }
         highScoreArray.push(Math.round(wordsPerMin));
         localStorage.setItem("wpmScore", JSON.stringify(highScoreArray));
