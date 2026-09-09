@@ -65,7 +65,6 @@ easyChoice.addEventListener("click", ()=>{
     document.querySelector("#easy").checked = true;
             localStorage.setItem("chosenDifficulty", "easy");
             chosenDifficulty = localStorage.getItem("chosenDifficulty");
-             console.log(chosenDifficulty);
             if (screen.width >= 1000) {
                 easyChoice.style.border = "1px solid hsl(214, 100%, 55%)";
                 easyLabel.style.color ="hsl(214, 100%, 55%)";
@@ -84,7 +83,6 @@ mediumChoice.addEventListener("click", ()=>{
     document.querySelector("#medium").checked = true;
             localStorage.setItem("chosenDifficulty", "medium");
             chosenDifficulty = localStorage.getItem("chosenDifficulty");
-            console.log(chosenDifficulty);
             if (screen.width >= 1000) {
                 mediumChoice.style.border = "1px solid hsl(214, 100%, 55%)";
                 mediumLabel.style.color ="hsl(214, 100%, 55%)";
@@ -103,7 +101,6 @@ hardChoice.addEventListener("click", ()=>{
     document.querySelector("#hard").checked = true;
             localStorage.setItem("chosenDifficulty", "hard");
             chosenDifficulty = localStorage.getItem("chosenDifficulty");
-            console.log(chosenDifficulty);
             if (screen.width >= 1000) {
                 hardChoice.style.border = "1px solid hsl(214, 100%, 55%)";
                 hardLabel.style.color ="hsl(214, 100%, 55%)";
@@ -122,7 +119,6 @@ timedChoice.addEventListener("click", ()=>{
     document.querySelector("#timed").checked = true;
             localStorage.setItem("chosenMode", "Timed");
             chosenMode = localStorage.getItem("chosenMode");
-            console.log(chosenMode);
             if (screen.width >= 1000) {
                 timedChoice.style.border = "1px solid hsl(214, 100%, 55%)";
                 timedLabel.style.color ="hsl(214, 100%, 55%)";
@@ -139,7 +135,6 @@ passageChoice.addEventListener("click", ()=>{
     document.querySelector("#passage").checked = true;
             localStorage.setItem("chosenMode", "Passage");
             chosenMode = localStorage.getItem("chosenMode");
-            console.log(chosenMode);
             if (screen.width >= 1000) {
                 passageChoice.style.border = "1px solid hsl(214, 100%, 55%)";
                 passageLabel.style.color ="hsl(214, 100%, 55%)";
@@ -274,13 +269,16 @@ const resultRightValues = document.querySelector(".result-stat-characters-correc
 const resultWrongValues = document.querySelector(".result-stat-characters-wrong");
 const resultMessage = document.querySelector(".results-title");
 const resultSecondMessage = document.querySelector(".results-message");
+const resultImg = document.querySelector(".baseline-image");
+const resultConfetti = document.querySelector(".confetti");
+const redStar = document.querySelector(".red-star");
+const yellowStar = document.querySelector(".yellow-star");
 
 function myTimer() {
  var start = Date.now();
 let currentSecond  = 0;
     const myInterval = setInterval(function() {
     var delta = Date.now() - start; // milliseconds elapsed since start
-console.log(redNode);
 
     currentSecond = Math.floor(delta / 1000);
     if (currentSecond < 10){
@@ -314,9 +312,15 @@ function generateResult() {
         if ((Math.round(wordsPerMin) > returnHighScore(highScoreArray))&&(highScoreArray.length !=1)) {
             resultMessage.innerHTML = "High Score Smashed";
             resultSecondMessage.innerHTML = "You're getting faster. That was incredible typing!";
+            resultImg.setAttribute("src", "assets/images/icon-new-pb.svg");
+            resultImg.style.border = "none";
+            resultImg.style.boxShadow = "none";
+            resultConfetti.style.display= "block";
+            redStar.style.display = "none";
+            yellowStar.style.display = "none";
         } else if (highScoreArray.length == 1){
             resultMessage.innerHTML = "Baseline Established!";
-            resultSecondMessage,innerHTML = "You've set the bar! Now the real challenge begins—time to beat it.";
+            resultSecondMessage.innerHTML = "You've set the bar! Now the real challenge begins—time to beat it.";
         }
         highScoreArray.push(Math.round(wordsPerMin));
         localStorage.setItem("wpmScore", JSON.stringify(highScoreArray));
