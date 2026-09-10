@@ -13,7 +13,9 @@ const hardChoice = document.querySelector(".hard-choice");
 const easyLabel = document.querySelector("#easy-label");
 const mediumLabel = document.querySelector("#medium-label");
 const hardLabel = document.querySelector("#hard-label");
+const timedButton = document.querySelector("#timed");
 const timedChoice = document.querySelector(".timed-choice");
+const passageButton = document.querySelector("#passage");
 const passageChoice = document.querySelector(".passage-choice");
 const timedLabel = document.querySelector("#timed-label");
 const passageLabel = document.querySelector("#passage-label");
@@ -233,6 +235,7 @@ function initialLoad() {
     bestWPM.innerHTML = returnHighScore(JSON.parse(localStorage.getItem("wpmScore")));
     if (localStorage.getItem("chosenMode") == undefined || localStorage.getItem("chosenMode") == null || localStorage.getItem("chosenMode") == "") {
         localStorage.setItem("chosenMode",  "Timed"); 
+        document.querySelector("#timed").checked = true;
     }
   let modeStyles =  returnModeStyles(screen.width,  localStorage.getItem("chosenMode"));
    document.querySelector("#timed").checked = modeStyles[0];
@@ -286,7 +289,10 @@ let currentSecond  = 0;
     } else if (currentSecond > 10) {
     timeStatvalue.innerHTML = `0:${currentSecond}`;
     } 
-    if (currentSecond==60) {
+    if (timedButton.checked && currentSecond==60) {
+        clearInterval(myInterval);
+        generateResult();
+    } else if (passageButton.checked && (textWall.textContent.length == stringArr.length)) {
         clearInterval(myInterval);
         generateResult();
     }
