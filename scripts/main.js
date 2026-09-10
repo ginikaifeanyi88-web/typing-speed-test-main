@@ -99,7 +99,7 @@ easyChoice.addEventListener("click", ()=>{
             if (screen.width < 1000) {
                 difficultyDecisionName.innerHTML = "Easy";
             }
-
+            location.reload();
       
 })
 
@@ -120,7 +120,7 @@ mediumChoice.addEventListener("click", ()=>{
             if (screen.width < 1000) {
                 difficultyDecisionName.innerHTML = "Medium";
             }
-
+            location.reload();
 })
 
 hardChoice.addEventListener("click", ()=>{
@@ -140,6 +140,7 @@ hardChoice.addEventListener("click", ()=>{
             if (screen.width < 1000) {
                 difficultyDecisionName.innerHTML = "Hard";
             }
+            location.reload();
 
 })
 
@@ -157,6 +158,7 @@ timedChoice.addEventListener("click", ()=>{
              if (screen.width < 1000) {
                 modeDecisionName.innerHTML = "Timed (60s)";
             }
+            location.reload();
 })
 
 passageChoice.addEventListener("click", ()=>{
@@ -173,11 +175,12 @@ passageChoice.addEventListener("click", ()=>{
             if (screen.width < 1000) {
                 modeDecisionName.innerHTML = "Passage";
             }
+            location.reload();
 })
 
 //mode and difficulty button event listeners in mobile
-const modeButton = document.querySelector(".mode");
-const difficultyButton = document.querySelector(".difficulty");
+const modeButton = document.querySelector(".mode-decision");
+const difficultyButton = document.querySelector(".difficulty-decision");
 const bodyButton = document.querySelector("body");
 const decisions =document.querySelectorAll(".decision");
 const decisionIcons = document.querySelectorAll(".decision > i");
