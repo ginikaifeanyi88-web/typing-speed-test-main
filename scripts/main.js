@@ -7,8 +7,11 @@ console.log(jsonData);
 // radio button and related variable declarations
 const difficultyMenu = document.querySelector(".choices-difficulty");
 const modeMenu = document.querySelector(".choices-mode");
+const easyButton = document.querySelector("#easy");
 const easyChoice = document.querySelector(".easy-choice");
+const mediumButton = document.querySelector("#medium");
 const mediumChoice = document.querySelector(".medium-choice");
+const hardButton = document.querySelector("#hard");
 const hardChoice = document.querySelector(".hard-choice");
 const easyLabel = document.querySelector("#easy-label");
 const mediumLabel = document.querySelector("#medium-label");
@@ -25,19 +28,36 @@ const bestWPM = document.querySelector(".best-score-value");
 let chosenDifficulty = localStorage.getItem("chosenDifficulty");
 let chosenMode = localStorage.getItem("chosenMode");
 
-// executing initialLoad function
-initialLoad();
-
 // loading data to text wall (currently a work in progress)
 let placeHolderText = "";
 let stringArr = "";
 const textWall = document.querySelector(".text-wall");
 const placeHolder = document.querySelector(".placeholder")
-stringArr = jsonData.hard[8].text. split('');
-stringArr.forEach((character)=>{
-    placeHolderText+= `<span>${character}</span>`;
-});
-placeHolder.innerHTML = placeHolderText;
+function loadPlaceHolder() {
+    let randomNum = Math.floor(Math.random() * 10);
+    if (easyButton.checked) {
+        stringArr = jsonData.easy[randomNum].text. split('');
+        stringArr.forEach((character)=>{
+            placeHolderText+= `<span>${character}</span>`;
+        });
+        placeHolder.innerHTML = placeHolderText;
+    } else if (mediumButton.checked) {
+         stringArr = jsonData.medium[randomNum].text. split('');
+        stringArr.forEach((character)=>{
+            placeHolderText+= `<span>${character}</span>`;
+        });
+        placeHolder.innerHTML = placeHolderText;
+    } else if (hardButton.checked) {
+        stringArr = jsonData.hard[randomNum].text. split('');
+        stringArr.forEach((character)=>{
+            placeHolderText+= `<span>${character}</span>`;
+        });
+        placeHolder.innerHTML = placeHolderText;
+    }
+}
+
+// executing initialLoad function
+initialLoad();
 
 // time and accuracy in dom declaration
 const timeStatvalue = document.querySelector(".Time-stat-value");
@@ -79,10 +99,13 @@ easyChoice.addEventListener("click", ()=>{
             if (screen.width < 1000) {
                 difficultyDecisionName.innerHTML = "Easy";
             }
+
+      
 })
 
 mediumChoice.addEventListener("click", ()=>{
     document.querySelector("#medium").checked = true;
+    console.log("yo");
             localStorage.setItem("chosenDifficulty", "medium");
             chosenDifficulty = localStorage.getItem("chosenDifficulty");
             if (screen.width >= 1000) {
@@ -97,10 +120,12 @@ mediumChoice.addEventListener("click", ()=>{
             if (screen.width < 1000) {
                 difficultyDecisionName.innerHTML = "Medium";
             }
+
 })
 
 hardChoice.addEventListener("click", ()=>{
     document.querySelector("#hard").checked = true;
+    console.log("damn");
             localStorage.setItem("chosenDifficulty", "hard");
             chosenDifficulty = localStorage.getItem("chosenDifficulty");
             if (screen.width >= 1000) {
@@ -115,6 +140,7 @@ hardChoice.addEventListener("click", ()=>{
             if (screen.width < 1000) {
                 difficultyDecisionName.innerHTML = "Hard";
             }
+
 })
 
 timedChoice.addEventListener("click", ()=>{
@@ -247,11 +273,12 @@ function initialLoad() {
    modeDecisionName.innerHTML = modeStyles[6]
     if (localStorage.getItem("chosenDifficulty") == undefined || localStorage.getItem("chosenDifficulty") == null || localStorage.getItem("chosenDifficulty") == "") {
         localStorage.setItem("chosenDifficulty",  "easy"); 
+        document.querySelector("#easy").checked = true;
     }
     let difficultyStyles = returnDifficultyStyles(screen.width, localStorage.getItem("chosenDifficulty"));
         document.querySelector("#easy").checked = difficultyStyles[0];
         document.querySelector("#medium").checked = difficultyStyles[1];
-        document.querySelector("#medium").checked = difficultyStyles[2];
+        document.querySelector("#hard").checked = difficultyStyles[2];
         easyChoice.style.border = difficultyStyles[3];
         easyLabel.style.color = difficultyStyles[4];
          mediumChoice.style.border = difficultyStyles[5];
@@ -259,6 +286,7 @@ function initialLoad() {
          hardChoice.style.border = difficultyStyles[7];
          hardLabel.style.color = difficultyStyles[8];
          difficultyDecisionName.innerHTML = difficultyStyles[9];
+         loadPlaceHolder();
 }
 
 // timer function
@@ -292,10 +320,7 @@ let currentSecond  = 0;
     if (timedButton.checked && currentSecond==60) {
         clearInterval(myInterval);
         generateResult();
-    } else if (passageButton.checked && (textWall.textContent.length == stringArr.length)) {
-        clearInterval(myInterval);
-        generateResult();
-    }
+    } 
 
 }, 1000); 
 }
