@@ -332,7 +332,7 @@ overflow: hidden;
 width: 950px;
  left: 50%;
     transform: translate(-50%, 0);
-bottom: -125px;
+bottom: -135px;
 
 
 }
@@ -396,6 +396,10 @@ bottom: -125px;
     font-weight: bold;
     border-radius: 10px;
 }
+
+.go-again-button:hover {
+    cursor: pointer;
+}
 .retry-icon {
     padding-left: 7px;
 }
@@ -408,8 +412,20 @@ bottom: -125px;
          color: hsl(228, 45%, 44%); 
     }
 
+    .time-container{
+    width: 50px;
+}
+
 /* Desktop view */
 @media only screen and (min-width:1000px) {
+
+.time-container{
+    width: 130px;
+}
+
+.stat-value{
+    margin-left: 10px;
+}
 .header {
     margin-top: 25px;
 }
@@ -558,7 +574,7 @@ padding-left: 2vw;
 .confetti {
 
 width: 1350px;
-bottom: -134px;
+bottom: -165px;
 
 
 }

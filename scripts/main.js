@@ -205,7 +205,16 @@ bodyButton.addEventListener("click", (event)=>{
     
 })
 
+// restart buttons
+const restartButton = document.querySelector(".restart-button");
+const goAgainButton  = document.querySelector(".go-again-button");
+restartButton.addEventListener("click", ()=>{
+    location.reload();
+});
 
+goAgainButton.addEventListener("click", ()=>{
+    location.reload();
+});
 
 // text wall typing event listener
  let greenNodes = 0;
