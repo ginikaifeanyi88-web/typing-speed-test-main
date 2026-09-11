@@ -72,7 +72,7 @@ startButton.addEventListener("click", ()=>{
     placeHolder.style.filter = "blur(0px)";
     startButtonAndText.style.display = "none";
     textWall.focus();
-    myTimer();
+    myTimer(0);
 });
 
 startText.addEventListener("click", ()=>{
@@ -226,7 +226,7 @@ goAgainButton.addEventListener("click", ()=>{
  let textLengthChecker=0;
 
      
-textWall.addEventListener("input", ()=>{
+textWall.addEventListener("input", (event)=>{
     let textWallValue = textWall.textContent;
         greenNodesResult = 0;
      redNodeResult = 0;
@@ -317,21 +317,26 @@ const resultConfetti = document.querySelector(".confetti");
 const redStar = document.querySelector(".red-star");
 const yellowStar = document.querySelector(".yellow-star");
 
-function myTimer() {
+function myTimer(timeValue) {
  var start = Date.now();
 let currentSecond  = 0;
+let currentMinute = timeValue;
     const myInterval = setInterval(function() {
     var delta = Date.now() - start; // milliseconds elapsed since start
 
     currentSecond = Math.floor(delta / 1000);
     if (currentSecond < 10){
-        timeStatvalue.innerHTML = `0:0${currentSecond}`;
+        timeStatvalue.innerHTML = `${currentMinute}:0${currentSecond}`;
     } else if (currentSecond > 10) {
-    timeStatvalue.innerHTML = `0:${currentSecond}`;
+    timeStatvalue.innerHTML = `${currentMinute}:${currentSecond}`;
     } 
     if (timedButton.checked && currentSecond==60) {
         clearInterval(myInterval);
         generateResult();
+    } 
+      if (passageButton.checked && (currentSecond%60==0)) {
+        clearInterval(myInterval);
+        myTimer(timeValue+1);
     } 
 
 }, 1000); 
