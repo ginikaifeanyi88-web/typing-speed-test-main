@@ -72,7 +72,7 @@ startButton.addEventListener("click", ()=>{
     placeHolder.style.filter = "blur(0px)";
     startButtonAndText.style.display = "none";
     textWall.focus();
-    myTimer(0);
+    myTimer();
 });
 
 startText.addEventListener("click", ()=>{
@@ -263,6 +263,16 @@ textWall.addEventListener("input", (event)=>{
         }
 })
 
+textWall.addEventListener("keyup", (event)=>{
+    if (((textWall.textContent.length) >=stringArr.length) && event.key!= 8 && 
+         event.key!= 37 && event.key != 38 && event.key != 39 && 
+         event.key != 40) {
+            console.log("djdjdjd");
+            event.preventDefault();
+            textWall.innerHTML = textWall.textContent.substring(0, (stringArr.length-1));
+    }
+
+})
 
 // intialLoad function
 function initialLoad() {
@@ -317,28 +327,34 @@ const resultConfetti = document.querySelector(".confetti");
 const redStar = document.querySelector(".red-star");
 const yellowStar = document.querySelector(".yellow-star");
 
-function myTimer(timeValue) {
+function myTimer() {
  var start = Date.now();
 let currentSecond  = 0;
-let currentMinute = timeValue;
+let currentMinute = 0;
+ let minutesPassed =0;
     const myInterval = setInterval(function() {
-    var delta = Date.now() - start; // milliseconds elapsed since start
 
+    var delta = Date.now() - start; // milliseconds elapsed since start
+    currentMinute = Math.floor(delta/60000);
     currentSecond = Math.floor(delta / 1000);
-    if (currentSecond < 10){
-        timeStatvalue.innerHTML = `${currentMinute}:0${currentSecond}`;
-    } else if (currentSecond > 10) {
-    timeStatvalue.innerHTML = `${currentMinute}:${currentSecond}`;
-    } 
-    if (timedButton.checked && currentSecond==60) {
+   
+    if (currentSecond % 60 ==0) {
+        minutesPassed = currentSecond /60;
+        
+    }
+    currentSecond = currentSecond - (60*minutesPassed);
+     if (currentSecond > 61){
+        let additionalMinutes = Math.trunc(currentSecond /60);
+        console.log("Timer is off by: "+additionalMinutes+ " minutes. Trying to resolve...");
+        // currentMinute -= additionalMinutes;
+        currentSecond = currentSecond - (60* additionalMinutes);
+    }
+    timeStatvalue.innerHTML = `${currentMinute <0 ? "0"+currentMinute:currentMinute}:${currentSecond <10? "0"+currentSecond:currentSecond}`;
+
+    if (timedButton.checked && currentMinute==1) {
         clearInterval(myInterval);
         generateResult();
     } 
-      if (passageButton.checked && (currentSecond%60==0)) {
-        clearInterval(myInterval);
-        myTimer(timeValue+1);
-    } 
-
 }, 1000); 
 }
 

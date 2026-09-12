@@ -389,7 +389,7 @@ bottom: -135px;
     padding: 10px;
     width: 160px;
     align-items: center;
-  justify-content: center;
+    justify-content: center;
     flex-direction: row;
     background-color: #fff;
     color: black;
@@ -412,12 +412,16 @@ bottom: -135px;
          color: hsl(228, 45%, 44%); 
     }
 
-    .time-container{
-    width: 50px;
+    .unit-container{
+    width: 55px;
+}
+
+.single-stat-accuracy { 
+    max-width: 250px;
 }
 
 /* Desktop view */
-@media only screen and (min-width:1000px) {
+@media only screen and (min-width:1060px) {
 
 .time-container{
     width: 130px;
@@ -433,11 +437,16 @@ bottom: -135px;
 .text-wall {
  
     height: 400px;
-
-
-  
 }
-
+.unit-container{
+    width:131px;
+}
+.single-stat-time {
+    width: 130px;
+}
+.single-stat-WPM{
+    width: 130px;
+}
 .main-logo {
      background-image: url(../assets/images/logo-large.svg);
     height: 40px;
