@@ -1,8 +1,6 @@
 // importing data from json file and functions
 import jsonData from './data/data.json' with { type: "json" };
 import { returnModeStyles, returnDifficultyStyles } from './controllers/styleRelatedFunctions.js';
-console.log(jsonData);
-
 
 // radio button and related variable declarations
 const difficultyMenu = document.querySelector(".choices-difficulty");
@@ -353,7 +351,12 @@ let currentMinute = 0;
         currentSecond = currentSecond - (60* additionalMinutes);
     }
     timeStatvalue.innerHTML = `${currentMinute <0 ? "0"+currentMinute:currentMinute}:${currentSecond <10? "0"+currentSecond:currentSecond}`;
-
+  if (timedButton.checked && (currentSecond >=30 && currentSecond<50)) {
+    timeStatvalue.style.color ="hsl(49, 85%, 70%)";
+    } 
+     if (timedButton.checked && (currentSecond >=50 && currentSecond<60)) {
+    timeStatvalue.style.color =" hsl(354, 63%, 57%)";
+    } 
     if (timedButton.checked && currentMinute==1) {
         clearInterval(myInterval);
         generateResult();
