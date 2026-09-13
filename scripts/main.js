@@ -216,7 +216,7 @@ goAgainButton.addEventListener("click", ()=>{
     location.reload();
 });
 
-// text wall typing event listener
+// text wall typing event listeners
  let greenNodes = 0;
  let redNode = 0;
  let greenNodesResult = 0;
@@ -263,16 +263,19 @@ textWall.addEventListener("input", (event)=>{
         }
 })
 
-textWall.addEventListener("keyup", (event)=>{
-    if (((textWall.textContent.length) >=stringArr.length) && event.key!= 8 && 
-         event.key!= 37 && event.key != 38 && event.key != 39 && 
-         event.key != 40) {
-            console.log("djdjdjd");
+textWall.addEventListener("keypress", (event)=>{
+    if (((textWall.textContent.length) >=stringArr.length) && event.key!= "Backspace" && 
+         event.key!= "ArrowLeft" && event.key != "ArrowUp" && event.key != "ArrowRight" && 
+         event.key != "ArrowDown") {
             event.preventDefault();
-            textWall.innerHTML = textWall.textContent.substring(0, (stringArr.length-1));
     }
 
 })
+
+textWall.addEventListener("paste", (event)=>{
+    event.preventDefault();
+});
+
 
 // intialLoad function
 function initialLoad() {
