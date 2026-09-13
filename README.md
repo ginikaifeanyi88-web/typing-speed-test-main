@@ -31,7 +31,7 @@ Users should be able to:
 
 ### Links
 
-- Live Site URL: [Add live site URL here](https://typing-speed-test-main-psi.vercel.app/)
+- Live Site URL: [The site](https://typing-speed-test-main-psi.vercel.app/)
 
 ## My process
 
