@@ -103,7 +103,6 @@ easyChoice.addEventListener("click", ()=>{
 
 mediumChoice.addEventListener("click", ()=>{
     document.querySelector("#medium").checked = true;
-    console.log("yo");
             localStorage.setItem("chosenDifficulty", "medium");
             chosenDifficulty = localStorage.getItem("chosenDifficulty");
             if (screen.width >= 1000) {
@@ -123,7 +122,6 @@ mediumChoice.addEventListener("click", ()=>{
 
 hardChoice.addEventListener("click", ()=>{
     document.querySelector("#hard").checked = true;
-    console.log("damn");
             localStorage.setItem("chosenDifficulty", "hard");
             chosenDifficulty = localStorage.getItem("chosenDifficulty");
             if (screen.width >= 1000) {
@@ -346,7 +344,7 @@ let currentMinute = 0;
     currentSecond = currentSecond - (60*minutesPassed);
      if (currentSecond > 61){
         let additionalMinutes = Math.trunc(currentSecond /60);
-        console.log("Timer is off by: "+additionalMinutes+ " minutes. Trying to resolve...");
+        // console.log("Timer is off by: "+additionalMinutes+ " minutes. Trying to resolve...");
         // currentMinute -= additionalMinutes;
         currentSecond = currentSecond - (60* additionalMinutes);
     }
