@@ -16,7 +16,6 @@ const mediumLabel = document.querySelector("#medium-label");
 const hardLabel = document.querySelector("#hard-label");
 const timedButton = document.querySelector("#timed");
 const timedChoice = document.querySelector(".timed-choice");
-const passageButton = document.querySelector("#passage");
 const passageChoice = document.querySelector(".passage-choice");
 const timedLabel = document.querySelector("#timed-label");
 const passageLabel = document.querySelector("#passage-label");
