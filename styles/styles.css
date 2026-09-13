@@ -279,7 +279,7 @@ overflow: hidden;
 
 .text {
     margin-top: 26px;
-    margin-bottom:  220px;
+    margin-bottom:  50px;
 }
 .restart-test {
  border-top: 1px solid gray;
@@ -590,6 +590,6 @@ bottom: -165px;
 
 .text {
 
-    margin-bottom:  300px;
+    margin-bottom:  100px;
 }
 }
