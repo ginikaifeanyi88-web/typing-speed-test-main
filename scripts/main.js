@@ -24,6 +24,7 @@ const modeDecisionName = document.querySelector(".mode-decision-name");
 const bestWPM = document.querySelector(".best-score-value");
 let chosenDifficulty = localStorage.getItem("chosenDifficulty");
 let chosenMode = localStorage.getItem("chosenMode");
+let hasGameStarted = false;
 
 // loading data to text wall (currently a work in progress)
 let placeHolderText = "";
@@ -69,6 +70,7 @@ const startButtonAndText = document.querySelector(".button-and-text");
 const startText = document.querySelector(".start-text");
 const diffNMode = document.querySelector(".difficulty-and-mode");
 startButton.addEventListener("click", ()=>{
+    hasGameStarted = true;
     placeHolder.style.filter = "blur(0px)";
     diffNMode.style.filter="blur(3px)";
      diffNMode.style.zIndex="-2";
@@ -78,6 +80,7 @@ startButton.addEventListener("click", ()=>{
 });
 
 startText.addEventListener("click", ()=>{
+    hasGameStarted = true;
     placeHolder.style.filter = "blur(0px)";
      diffNMode.style.filter="blur(2px)";
       diffNMode.style.zIndex="-2";
@@ -196,7 +199,10 @@ difficultyButton.addEventListener("click", ()=>{
     modeMenu.style.display="";
 });
 
+// body and html tag event listeners
+
 bodyButton.addEventListener("click", (event)=>{
+   
      if (event.target ==  difficultyButton|| event.target == modeButton || event.target == modeMenu || event.target == difficultyMenu|| event.target == decisions[0]|| event.target == decisions[1]|| event.target== difficultyDecisionName||event.target == modeDecisionName|| event.target ==decisionIcons[0] || event.target == decisionIcons[1]) {
       
     } else {
@@ -205,6 +211,34 @@ bodyButton.addEventListener("click", (event)=>{
     }
     
 })
+
+
+document.querySelector("html").addEventListener ("click", (event)=>{
+     if (event.target !== restartButton &&(hasGameStarted == true)){
+      placeCaretAtEnd(textWall);
+
+    }
+})
+
+
+// function to place caret at end of text. Pulled from : https://stackoverflow.com/questions/4233265/contenteditable-set-caret-at-the-end-of-the-text-cross-browser
+function placeCaretAtEnd(el) {
+    el.focus();
+    if (typeof window.getSelection != "undefined"
+            && typeof document.createRange != "undefined") {
+        var range = document.createRange();
+        range.selectNodeContents(el);
+        range.collapse(false);
+        var sel = window.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(range);
+    } else if (typeof document.body.createTextRange != "undefined") {
+        var textRange = document.body.createTextRange();
+        textRange.moveToElementText(el);
+        textRange.collapse(false);
+        textRange.select();
+    }
+}
 
 // restart buttons
 const restartButton = document.querySelector(".restart-button");
@@ -280,6 +314,7 @@ textWall.addEventListener("paste", (event)=>{
 
 // intialLoad function
 function initialLoad() {
+    hasGameStarted = false;
     let initScoreArray = [0];
     if (localStorage.getItem("wpmScore") == undefined || localStorage.getItem("wpmScore") == null || localStorage.getItem("wpmScore") == "") {
         localStorage.setItem("wpmScore", JSON.stringify(initScoreArray));
