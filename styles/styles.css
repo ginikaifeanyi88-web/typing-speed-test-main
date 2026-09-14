@@ -111,6 +111,7 @@ body {
     flex-direction: row;
     justify-content: space-between;
     margin-top: 15px;
+    position: relative;
 }
 .difficulty {
     position: relative;

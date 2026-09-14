@@ -31,6 +31,8 @@ let stringArr = "";
 const textWall = document.querySelector(".text-wall");
 const placeHolder = document.querySelector(".placeholder")
 function loadPlaceHolder() {
+    placeHolderText = "";
+    placeHolder.innerHTML="";
     let randomNum = Math.floor(Math.random() * 10);
     if (easyButton.checked) {
         stringArr = jsonData.easy[randomNum].text. split('');
@@ -65,8 +67,11 @@ const WPMStatvalue = document.querySelector(".WPM-stat-value");
 const startButton = document.querySelector(".start-button");
 const startButtonAndText = document.querySelector(".button-and-text");
 const startText = document.querySelector(".start-text");
+const diffNMode = document.querySelector(".difficulty-and-mode");
 startButton.addEventListener("click", ()=>{
     placeHolder.style.filter = "blur(0px)";
+    diffNMode.style.filter="blur(3px)";
+     diffNMode.style.zIndex="-2";
     startButtonAndText.style.display = "none";
     textWall.focus();
     myTimer();
@@ -74,6 +79,8 @@ startButton.addEventListener("click", ()=>{
 
 startText.addEventListener("click", ()=>{
     placeHolder.style.filter = "blur(0px)";
+     diffNMode.style.filter="blur(2px)";
+      diffNMode.style.zIndex="-2";
     startButtonAndText.style.display = "none";
      textWall.focus();
     myTimer();
@@ -96,7 +103,7 @@ easyChoice.addEventListener("click", ()=>{
             if (screen.width < 1000) {
                 difficultyDecisionName.innerHTML = "Easy";
             }
-            location.reload();
+            loadPlaceHolder();
       
 })
 
@@ -116,7 +123,7 @@ mediumChoice.addEventListener("click", ()=>{
             if (screen.width < 1000) {
                 difficultyDecisionName.innerHTML = "Medium";
             }
-            location.reload();
+          loadPlaceHolder();
 })
 
 hardChoice.addEventListener("click", ()=>{
@@ -135,7 +142,7 @@ hardChoice.addEventListener("click", ()=>{
             if (screen.width < 1000) {
                 difficultyDecisionName.innerHTML = "Hard";
             }
-            location.reload();
+           loadPlaceHolder();
 
 })
 
@@ -153,7 +160,6 @@ timedChoice.addEventListener("click", ()=>{
              if (screen.width < 1000) {
                 modeDecisionName.innerHTML = "Timed (60s)";
             }
-            location.reload();
 })
 
 passageChoice.addEventListener("click", ()=>{
@@ -170,7 +176,7 @@ passageChoice.addEventListener("click", ()=>{
             if (screen.width < 1000) {
                 modeDecisionName.innerHTML = "Passage";
             }
-            location.reload();
+         
 })
 
 //mode and difficulty button event listeners in mobile
