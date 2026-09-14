@@ -299,7 +299,7 @@ textWall.addEventListener("input", (event)=>{
 })
 
 textWall.addEventListener("keydown", (event)=>{
-    console.log(event.key);
+    // console.log(event.key);
     if (((textWall.textContent.length) >=stringArr.length) && event.key!= "Backspace") {
             event.preventDefault();
     }
