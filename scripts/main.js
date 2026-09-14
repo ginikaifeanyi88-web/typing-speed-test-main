@@ -268,6 +268,8 @@ textWall.addEventListener("input", (event)=>{
     placeHolder.childNodes.forEach((node)=>{
         node.style.color = "";
         node.style.textDecoration = "";
+        node.style.background = "";
+        node.style.borderRadius ="3px";
     })
     for (let i =0; i<stringArr.length;i++) {
           if (textWallValue[i] == stringArr[i]) {
@@ -286,6 +288,10 @@ textWall.addEventListener("input", (event)=>{
             placeHolder.childNodes[i].style.textDecoration = "";
              greenNodes +=1;
              greenNodesResult+=1;
+          }
+          if ((textWallValue.length != stringArr.length)) {
+            placeHolder.childNodes[(textWallValue.length)].style.background = " hsl(0, 0%, 34%)";
+
           }
     } 
       let typedCharacters = greenNodesResult + redNodeResult;
